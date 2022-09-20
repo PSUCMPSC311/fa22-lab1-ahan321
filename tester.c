@@ -205,42 +205,47 @@ int test_sort() {
 
 int test_twoSum() {
   {
-    printf("running %s: empty-array: ", __func__);
+    printf("running %s: regular-array: ", __func__);
     int out[]      = {2,7,11,15};
-    int expected[] = {2,7,11,15};
     int target = 18;
 
     int *got = twoSum(out, 4, target);
-    int *expected1 = ref_twoSum(expected, 4, target);
-    if(got == NULL){
-    printf("failed: returned value cannot be NULL\n");
-    return 0;
+
+    if (got == NULL) {
+      printf("Returned NULL!. Failed\n");
+      return 0;
     }
+
+    int expected1[2] = {7,11};
     if (*got != *expected1) {
       printf("failed:\n  got: %d and %d\n  expected: %d and %d\n", got[0], got[1], expected1[0], expected1[1]);
+      return 0;
     }
+    
     printf("passed\n");
   }
   {
-    printf("running %s: empty-array: ", __func__);
+    printf("running %s: regular-array: ", __func__);
     int out[]      = {1,14,3,8,16,5};
-    int expected[] = {1,14,3,8,16,5};
     int target = 30;
 
     int *got = twoSum(out, 6, target);
-    int *expected1 = ref_twoSum(expected, 6, target);
-    if(got == NULL){
-    printf("failed: returned value cannot be NULL\n");
-    return 0;
+    if (got == NULL) {
+      printf("Returned NULL!. Failed\n");
+      return 0;
     }
+
+    int expected1[2] = {14,16};
+
     if (*got != *expected1) {
       printf("failed:\n  got: %d and %d\n  expected: %d and %d\n", got[0], got[1], expected1[0], expected1[1]);
+      return 0;
     }
-    printf("passed\n");
   }
+
+  printf("passed\n");
   return 2;
 }
-
 
 
 int test_decryptPointer(){
@@ -272,8 +277,3 @@ int test_decryptPointer(){
 
     return 2;
 }
-
-
-
-
-
